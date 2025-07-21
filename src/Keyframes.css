@@ -1,0 +1,23 @@
+.card{
+    transition: filter 1.3s ease-in-out;
+    z-index: 2;
+}
+
+
+.card:hover .card-bg {
+    filter: blur(5px);
+}
+
+.card::before{
+    content: "";
+
+    background-color:cornflowerblue;
+    position: absolute;
+
+     height: 100%;
+     width: 100%;
+     z-index: -1;
+
+   
+}
+
