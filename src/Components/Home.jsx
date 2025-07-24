@@ -44,7 +44,7 @@ function Home() {
       <div className="Home  text-white h-screen w-full">
        
 
-        <div className='z-3 prof_img absolute  top-[35vh] left-1/2 -translate-x-1/2 -translate-y-1/2 size-50'> <img className='rounded-full size-50 object-cover  border-indigo-500 border-7 hover:scale-115 transition delay-25 duration-300 ease-in-out  shadow-fuchsia-500   shadow-lg hover:border-fuchsia-500   hover:shadow-indigo-500' src="../public/img.png" alt="Profile" />
+        <div className='z-3 prof_img absolute  top-[35vh] left-1/2 -translate-x-1/2 -translate-y-1/2 size-50'> <img className='rounded-full size-50 object-cover  border-indigo-500 border-7 hover:scale-115 transition delay-25 duration-300 ease-in-out  shadow-fuchsia-500   shadow-lg hover:border-fuchsia-500   hover:shadow-indigo-500' src="/img.png" alt="Profile" />
         </div>
 
         <div className='intro absolute w-[70vw] h-[45vh] mt-38 p-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2   flex flex-col  items-center  '>

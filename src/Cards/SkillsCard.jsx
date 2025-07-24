@@ -1,7 +1,17 @@
 import React from 'react';
 import { GoDotFill } from "react-icons/go";
 import { SiReact } from "react-icons/si";
-function SkillsCard({ title, info, status, snippet, color, icon }) {
+function SkillsCard({ title, info, status, snippet, color, icon,status2 }) {
+    console.log(status2);
+    async function fetching (){
+try {
+    const data= await fetch("https://jsonplaceholder.typicode.com/posts")
+    console.log(data);
+} catch (error) {
+    throw new Error(error);
+}
+    }
+    fetching();
     return (
         <div className='relative h-[40vh]  m-[3vw] rounded-2xl border border-white/20 
         bg-[#0f172a]/80 backdrop-blur-lg p-5 shadow-[0_8px_30px_rgba(0,0,0,0.3)]

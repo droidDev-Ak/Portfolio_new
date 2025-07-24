@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SkillsCard from '../Cards/SkillsCard'
 import {
   FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs, FaGitAlt, FaDatabase
@@ -7,6 +7,7 @@ import { SiTailwindcss, SiExpress, SiMongodb, SiGreensock, SiCplusplus } from 'r
 import { GoTerminal } from 'react-icons/go'
 
 function Skills() {
+  const [status2, setStatus2] = useState("Done");
   const skillsData = [
     {
       title: "HTML",
@@ -14,6 +15,7 @@ function Skills() {
       status: "Done",
       snippet: "<div>Hello World</div>",
       icon: <FaHtml5 size={28} className="text-orange-500" />
+      
     },
     {
       title: "CSS",
@@ -114,6 +116,7 @@ function Skills() {
                     ? "#ff9800"
                     : "#f44336"
               }
+              status2={status2}
             />
           ))}
         </div>
