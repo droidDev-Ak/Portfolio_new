@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import "../App.css";
-
-const sections = ["home", "about", "skills", "projects", "contact"];
+import MyPdf from "../assets/Resume.pdf";
+const sections = [
+  "home",
+  "about",
+  "skills",
+  "experience",
+  "projects",
+  "contact",
+];
 
 const scrollToSection = (id) => {
-  const section = document.getElementById(id);
-  section?.scrollIntoView({ behavior: "smooth" });
+  const anchor = document.getElementById(id);
+  anchor?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
 export default function Navbar() {
@@ -17,9 +23,8 @@ export default function Navbar() {
     gsap.from(".Navbar", {
       y: -80,
       opacity: 0,
-      ease: "power3.out",
       duration: 0.6,
-      delay: 0.4,
+      ease: "power3.out",
     });
   });
 
@@ -33,14 +38,13 @@ export default function Navbar() {
         });
       },
       {
-        // 🔥 KEY FIX
-        rootMargin: "-40% 0px -50% 0px",
+        rootMargin: "-50% 0px -50% 0px",
       }
     );
 
     sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
+      const anchor = document.getElementById(id);
+      if (anchor) observer.observe(anchor);
     });
 
     return () => observer.disconnect();
@@ -49,12 +53,10 @@ export default function Navbar() {
   return (
     <nav className="Navbar fixed top-0 w-full z-50 bg-[#040813]/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto h-20 flex items-center justify-between px-6 text-sm text-gray-300">
-        {/* Logo */}
         <div className="text-lg font-semibold text-indigo-400 cursor-pointer">
           Akash<span className="text-white">.</span>
         </div>
 
-        {/* Links */}
         <div className="hidden md:flex gap-8">
           {sections.map((section) => (
             <button
@@ -71,7 +73,6 @@ export default function Navbar() {
             >
               {section.charAt(0).toUpperCase() + section.slice(1)}
 
-              {/* underline */}
               <span
                 className={`
                   absolute -bottom-1 left-0 h-[2px] bg-indigo-400
@@ -83,18 +84,14 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Resume */}
+        
         <a
-          href="/resume.pdf"
-          className="
-            cursor-pointer
-            border border-indigo-400 text-indigo-400
-            px-4 py-2 rounded-md
-            transition-all duration-300
-            hover:bg-indigo-400 hover:text-black
-          "
+          href={MyPdf}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="border border-indigo-400 text-indigo-400 px-4 py-2 rounded-md hover:bg-indigo-400 hover:text-black transition"
         >
-          Resume
+          View Resume
         </a>
       </div>
     </nav>

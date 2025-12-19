@@ -63,9 +63,6 @@ function Skills() {
       snippet: "gsap.from('.el', { y: 50 })",
       icon: <SiGreensock size={26} className="text-green-500" />,
     },
-
-    /* ===== MERN STACK (DONE) ===== */
-
     {
       title: "Node.js",
       info: "JavaScript runtime for backend logic",
@@ -87,9 +84,6 @@ function Skills() {
       snippet: "User.find({})",
       icon: <SiMongodb size={26} className="text-green-400" />,
     },
-
-    /* ===== BACKEND & API ===== */
-
     {
       title: "REST APIs",
       info: "Designing and consuming RESTful backend services",
@@ -97,9 +91,6 @@ function Skills() {
       snippet: "GET /api/users",
       icon: <FaDatabase size={26} className="text-indigo-400" />,
     },
-
-    /* ===== TOOLING ===== */
-
     {
       title: "Git & GitHub",
       info: "Version control & team collaboration",
@@ -107,9 +98,6 @@ function Skills() {
       snippet: "git push origin main",
       icon: <FaGitAlt size={26} className="text-orange-400" />,
     },
-
-    /* ===== CORE CS ===== */
-
     {
       title: "C++",
       info: "Used for DSA and problem solving",
@@ -121,7 +109,6 @@ function Skills() {
 
   return (
     <section
-      id="skills"
       className="
         relative
         w-full
@@ -132,8 +119,10 @@ function Skills() {
         isolate
       "
     >
-      {/* Header */}
-      
+      <div
+        id="skills"
+        className="absolute -top-24 h-[60vh] w-full pointer-events-none"
+      />
 
       <div className="max-w-6xl mx-auto px-6 mb-20 text-center">
         <h2 className="text-4xl font-semibold text-gray-200">
@@ -142,7 +131,6 @@ function Skills() {
         <div className="mt-3 h-[3px] w-20 bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-full mx-auto"></div>
       </div>
 
-      {/* Masonry layout */}
       <div className="max-w-6xl mx-auto px-6">
         <div
           className="

@@ -20,7 +20,7 @@ const projects = [
     github: "https://github.com/droidDev-Ak/Calculator.git",
     live: "https://calci-pearl.vercel.app/",
     image:
-      "https://tse3.mm.bing.net/th/id/OIP.UlASLuVgzukLPXz6LZFpXgAAAA?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3file:///Users/apple/Downloads/image-removebg-preview%20(3).png",
+      "https://tse3.mm.bing.net/th/id/OIP.UlASLuVgzukLPXz6LZFpXgAAAA?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
   },
   {
     title: "Weather App",
@@ -47,7 +47,6 @@ const projects = [
 export default function Projects() {
   return (
     <section
-      id="projects"
       className="
         relative
         w-full
@@ -58,19 +57,22 @@ export default function Projects() {
         isolate
       "
     >
-      {/* Header */}
-      
-      <div className="max-w-6xl mx-auto px-6 mb-20 text-center">
-        <h2 className="text-4xl font-semibold text-gray-200">Projects</h2>
-        <div className="mt-3 h-[3px] w-20 bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-full mx-auto"></div>
+      <div
+        id="projects"
+        className="absolute -top-24 h-[60vh] w-full pointer-events-none"
+      />
 
+      <div className="max-w-6xl mx-auto px-6 mb-20 text-center">
+        <h2 className="text-4xl font-semibold text-gray-200">
+          Projects
+        </h2>
+        <div className="mt-3 h-[3px] w-20 bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-full mx-auto"></div>
         <p className="mt-4 text-gray-400 max-w-xl mx-auto">
           Selected projects that reflect my focus on full-stack development,
           clean architecture, and real-world problem solving.
         </p>
       </div>
 
-      {/* Cards */}
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
         {projects.map((project, index) => (
           <div
@@ -88,7 +90,6 @@ export default function Projects() {
               hover:border-indigo-400/40
             "
           >
-            {/* Image */}
             <div className="relative h-48 overflow-hidden">
               <img
                 src={project.image}
@@ -101,7 +102,6 @@ export default function Projects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/80 to-transparent"></div>
 
-              {/* Status badge */}
               {project.status && (
                 <div className="absolute top-4 left-4 px-3 py-1 text-xs font-medium rounded-full bg-yellow-500/20 text-yellow-300 border border-yellow-400/30">
                   {project.status}
@@ -109,7 +109,6 @@ export default function Projects() {
               )}
             </div>
 
-            {/* Content */}
             <div className="relative p-6 flex flex-col h-full">
               <h3 className="text-2xl font-semibold text-gray-100">
                 {project.title}
@@ -119,7 +118,6 @@ export default function Projects() {
                 {project.description}
               </p>
 
-              {/* Tech */}
               <div className="flex flex-wrap gap-2 mt-5">
                 {project.tech.map((t, i) => (
                   <span
@@ -137,7 +135,6 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* Links */}
               <div className="flex gap-6 mt-6 text-gray-400">
                 <a
                   href={project.github}
@@ -163,7 +160,6 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Glass glow */}
             <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-tr from-indigo-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition duration-300" />
           </div>
         ))}

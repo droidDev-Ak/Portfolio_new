@@ -14,21 +14,26 @@ export default function About() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".about-section",
-          start: "top 75%",
+          start: "top 70%",
         },
       }
     );
   }, []);
 
   return (
-    <section
-      id="about"
-      className="about-section relative w-full bg-[#040813] text-gray-300 py-32"
-    >
+    <section className="about-section relative w-full bg-[#040813] text-gray-300 py-32">
+      {/* 🔑 NAVBAR ANCHOR — DO NOT REMOVE */}
+      <div
+        id="about"
+        className="absolute -top-24 h-[60vh] w-full pointer-events-none"
+      />
+
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
         <div className="mb-20">
-          <h2 className="text-4xl font-semibold text-gray-200">About Me</h2>
+          <h2 className="text-4xl font-semibold text-gray-200">
+            About Me
+          </h2>
           <div className="mt-3 h-[3px] w-20 bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-full"></div>
         </div>
 
@@ -66,7 +71,7 @@ export default function About() {
             </p>
           </div>
 
-          {/* Right: What I bring */}
+          {/* Right: Strengths */}
           <div className="space-y-6">
             <h3 className="about-fade text-2xl font-semibold text-gray-200 mb-6">
               What I bring to the table
@@ -109,7 +114,9 @@ export default function About() {
                     hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)]
                   "
                 >
-                  <h4 className="text-gray-200 font-medium">{item.title}</h4>
+                  <h4 className="text-gray-200 font-medium">
+                    {item.title}
+                  </h4>
                   <p className="text-sm text-gray-400 mt-1 leading-relaxed">
                     {item.desc}
                   </p>
