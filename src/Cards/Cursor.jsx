@@ -1,33 +1,37 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const Cursor = () => {
-  const dotRef = useRef(null);
   const outlineRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if the screen is mobile size
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    checkMobile(); // Run on mount
+    window.addEventListener("resize", checkMobile);
+
+    // If it's mobile, don't add the mouse listeners
+    if (window.innerWidth < 1024) return;
+
     const moveCursor = (e) => {
       const { clientX, clientY } = e;
-
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${clientX}px, ${clientY}px)`;
-      }
-
       if (outlineRef.current) {
         outlineRef.current.animate(
           { transform: `translate(${clientX}px, ${clientY}px)` },
-          { duration: 500, fill: "forwards" }
+          { duration: 400, fill: "forwards" }
         );
       }
     };
 
-    // Listen for hover events on interactive elements
     const handleHover = () => setIsHovered(true);
     const handleUnhover = () => setIsHovered(false);
 
     window.addEventListener("mousemove", moveCursor);
 
-    // Select all interactive elements
     const interactives = document.querySelectorAll("a, button, .group, .cursor-pointer");
     interactives.forEach((el) => {
       el.addEventListener("mouseenter", handleHover);
@@ -35,6 +39,7 @@ const Cursor = () => {
     });
 
     return () => {
+      window.removeEventListener("resize", checkMobile);
       window.removeEventListener("mousemove", moveCursor);
       interactives.forEach((el) => {
         el.removeEventListener("mouseenter", handleHover);
@@ -43,24 +48,18 @@ const Cursor = () => {
     };
   }, []);
 
+  // Do not render anything if it's mobile
+  if (isMobile) return null;
+
   return (
-    <>
-
-      <div
-        ref={dotRef}
-        className={`fixed top-0 left-0 w-2.5 h-2.5 bg-indigo-500 rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300
-        ${isHovered ? "opacity-0" : "opacity-100"}`}
-      />
-      
-
-      <div
-        ref={outlineRef}
-        className={`fixed top-0 left-0 rounded-full pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out
+    <div
+      ref={outlineRef}
+      style={{ pointerEvents: "none" }}
+      className={`fixed top-0 left-0 rounded-full z-[9999] -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out
         ${isHovered 
-          ? "w-16 h-16 border-none bg-indigo-500/20 backdrop-blur-[2px]" 
-          : "w-10 h-10 border border-indigo-500/30 bg-transparent"}`}
-      />
-    </>
+          ? "w-14 h-14 border-2 border-indigo-400 bg-indigo-400/10 scale-110" 
+          : "w-8 h-8 border border-indigo-500/40 bg-transparent"}`}
+    />
   );
 };
 
