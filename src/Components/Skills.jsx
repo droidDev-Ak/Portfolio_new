@@ -7,6 +7,7 @@ import {
   FaReact,
   FaNodeJs,
   FaGitAlt,
+  FaDatabase,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -50,7 +51,7 @@ function Skills() {
     },
     {
       title: "Tailwind CSS",
-      info: "Utility-first CSS framework",
+      info: "Utility-first CSS framework for rapid UI development",
       status: "Done",
       snippet: "className='px-4 py-2 bg-indigo-500'",
       icon: <SiTailwindcss size={26} className="text-sky-400" />,
@@ -62,34 +63,53 @@ function Skills() {
       snippet: "gsap.from('.el', { y: 50 })",
       icon: <SiGreensock size={26} className="text-green-500" />,
     },
+
+    /* ===== MERN STACK (DONE) ===== */
+
     {
       title: "Node.js",
       info: "JavaScript runtime for backend logic",
-      status: "Practicing",
+      status: "Done",
       snippet: "const server = http.createServer()",
       icon: <FaNodeJs size={26} className="text-green-600" />,
     },
     {
       title: "Express.js",
-      info: "Backend framework for APIs",
-      status: "Practicing",
+      info: "Backend framework for building scalable APIs",
+      status: "Done",
       snippet: "app.post('/api', handler)",
       icon: <SiExpress size={26} className="text-gray-200" />,
     },
     {
       title: "MongoDB",
-      info: "NoSQL database for applications",
-      status: "Practicing",
+      info: "NoSQL database for application data",
+      status: "Done",
       snippet: "User.find({})",
       icon: <SiMongodb size={26} className="text-green-400" />,
     },
+
+    /* ===== BACKEND & API ===== */
+
+    {
+      title: "REST APIs",
+      info: "Designing and consuming RESTful backend services",
+      status: "Practicing",
+      snippet: "GET /api/users",
+      icon: <FaDatabase size={26} className="text-indigo-400" />,
+    },
+
+    /* ===== TOOLING ===== */
+
     {
       title: "Git & GitHub",
-      info: "Version control & collaboration",
+      info: "Version control & team collaboration",
       status: "Done",
       snippet: "git push origin main",
       icon: <FaGitAlt size={26} className="text-orange-400" />,
     },
+
+    /* ===== CORE CS ===== */
+
     {
       title: "C++",
       info: "Used for DSA and problem solving",
@@ -102,14 +122,24 @@ function Skills() {
   return (
     <section
       id="skills"
-      className="w-full bg-[#030712] text-gray-300 py-32"
+      className="
+        relative
+        w-full
+        bg-[#030712]
+        text-gray-300
+        py-32
+        z-10
+        isolate
+      "
     >
       {/* Header */}
-      <div className="max-w-6xl mx-auto px-6 mb-16">
+      
+
+      <div className="max-w-6xl mx-auto px-6 mb-20 text-center">
         <h2 className="text-4xl font-semibold text-gray-200">
           Technical Expertise
         </h2>
-        <div className="mt-3 h-[2px] w-24 bg-indigo-400 rounded-full"></div>
+        <div className="mt-3 h-[3px] w-20 bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-full mx-auto"></div>
       </div>
 
       {/* Masonry layout */}
@@ -123,10 +153,7 @@ function Skills() {
           "
         >
           {skillsData.map((skill, index) => (
-            <div
-              key={index}
-              className="mb-4 break-inside-avoid"
-            >
+            <div key={index} className="mb-4 break-inside-avoid">
               <SkillsCard
                 title={skill.title}
                 info={skill.info}
