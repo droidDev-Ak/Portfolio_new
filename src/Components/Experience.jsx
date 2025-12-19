@@ -14,12 +14,11 @@ const experiences = [
     status: "Completed",
   },
   {
-    company: "Freelance",
-    role: "MERN Stack Developer",
+    company: "",
+    role: "Open to Work",
     duration: "Present",
-    description: "Developing full-stack applications while improving system design fundamentals.",
+    description: "",
     points: [
-      "Actively building personal projects while improving system design basics",
       "Open to internships, freelance work, and startup collaborations",
       "Crafting scalable backend APIs using Node.js and MongoDB",
     ],
