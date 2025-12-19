@@ -14,8 +14,8 @@ const experiences = [
     status: "Completed",
   },
   {
-    company: "",
-    role: "Open to Work",
+    company: "Open to Work",
+    role: "",
     duration: "Present",
     description: "",
     points: [
