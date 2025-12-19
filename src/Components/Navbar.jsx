@@ -6,7 +6,7 @@ import MyPdf from "../assets/Resume.pdf";
 const sections = ["about", "skills", "experience", "projects", "contact"];
 
 export default function Navbar() {
-  const [active, setActive] = useState("home");
+  const [active, ] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Handle scroll for glass effect
