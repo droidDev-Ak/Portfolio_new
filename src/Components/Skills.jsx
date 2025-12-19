@@ -1,128 +1,153 @@
-import React, { useState } from 'react'
-import SkillsCard from '../Cards/SkillsCard'
+import { useState } from "react";
+import SkillsCard from "../Cards/SkillsCard";
 import {
-  FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs, FaGitAlt, FaDatabase
-} from 'react-icons/fa'
-import { SiTailwindcss, SiExpress, SiMongodb, SiGreensock, SiCplusplus } from 'react-icons/si'
-import { GoTerminal } from 'react-icons/go'
+  FaHtml5,
+  FaCss3,
+  FaJs,
+  FaReact,
+  FaNodeJs,
+  FaGitAlt,
+} from "react-icons/fa";
+import {
+  SiTailwindcss,
+  SiExpress,
+  SiMongodb,
+  SiGreensock,
+  SiCplusplus,
+} from "react-icons/si";
 
 function Skills() {
-  const [status2, setStatus2] = useState("Done");
+  const [status2] = useState("Done");
+
   const skillsData = [
     {
       title: "HTML",
       info: "Markup language used to create website structure",
       status: "Done",
       snippet: "<div>Hello World</div>",
-      icon: <FaHtml5 size={28} className="text-orange-500" />
-      
+      icon: <FaHtml5 size={26} className="text-orange-500" />,
     },
     {
       title: "CSS",
-      info: "Used to style HTML elements and layouts",
+      info: "Used to style layouts and UI components",
       status: "Done",
       snippet: "body { background-color: #fff; }",
-      icon: <FaCss3 size={28} className="text-blue-500" />
+      icon: <FaCss3 size={26} className="text-blue-500" />,
     },
     {
       title: "JavaScript",
-      info: "Client-side scripting language for web interactivity",
+      info: "Core language for web interactivity",
       status: "Done",
       snippet: "console.log('Hello, World!');",
-      icon: <FaJs size={28} className="text-yellow-400" />
+      icon: <FaJs size={26} className="text-yellow-400" />,
     },
     {
       title: "React",
-      info: "JavaScript library for building user interfaces",
+      info: "Library for building component-driven UIs",
       status: "Done",
       snippet: "const [count, setCount] = useState(0);",
-      icon: <FaReact size={28} className="text-[#61DBFB] animate-spin-slow" />
+      icon: <FaReact size={26} className="text-[#61DBFB]" />,
     },
     {
       title: "Tailwind CSS",
-      info: "Utility-first CSS framework for faster styling",
+      info: "Utility-first CSS framework",
       status: "Done",
-      snippet: "className='bg-blue-500 text-white p-4'",
-      icon: <SiTailwindcss size={28} className="text-sky-400" />
+      snippet: "className='px-4 py-2 bg-indigo-500'",
+      icon: <SiTailwindcss size={26} className="text-sky-400" />,
     },
     {
       title: "GSAP",
-      info: "Animation library for smooth UI transitions",
+      info: "Animation library for smooth UI motion",
       status: "Done",
-      snippet: "gsap.from('.box', { opacity: 0, y: -100 });",
-      icon: <SiGreensock size={28} className="text-green-500" />
+      snippet: "gsap.from('.el', { y: 50 })",
+      icon: <SiGreensock size={26} className="text-green-500" />,
     },
     {
       title: "Node.js",
-      info: "Runtime to run JS on the server-side",
+      info: "JavaScript runtime for backend logic",
       status: "Practicing",
-      snippet: "const http = require('http');",
-      icon: <FaNodeJs size={28} className="text-green-600" />
+      snippet: "const server = http.createServer()",
+      icon: <FaNodeJs size={26} className="text-green-600" />,
     },
     {
       title: "Express.js",
-      info: "Web framework for Node.js backend APIs",
+      info: "Backend framework for APIs",
       status: "Practicing",
-      snippet: "app.get('/', (req, res) => res.send('Hello'));",
-      icon: <SiExpress size={28} className="text-gray-200" />
+      snippet: "app.post('/api', handler)",
+      icon: <SiExpress size={26} className="text-gray-200" />,
     },
     {
       title: "MongoDB",
-      info: "NoSQL database used for flexible document storage",
+      info: "NoSQL database for applications",
       status: "Practicing",
-      snippet: "db.users.find({ name: 'Akash' })",
-      icon: <SiMongodb size={28} className="text-green-400" />
+      snippet: "User.find({})",
+      icon: <SiMongodb size={26} className="text-green-400" />,
     },
     {
       title: "Git & GitHub",
-      info: "Version control system to track code changes",
+      info: "Version control & collaboration",
       status: "Done",
-      snippet: "git commit -m 'Initial commit'",
-      icon: <FaGitAlt size={28} className="text-orange-400" />
+      snippet: "git push origin main",
+      icon: <FaGitAlt size={26} className="text-orange-400" />,
     },
     {
       title: "C++",
-      info: "Language used for DSA and competitive programming",
+      info: "Used for DSA and problem solving",
       status: "Done",
-      snippet: 'cout << "Hello World" << endl;',
-      icon: <SiCplusplus size={28} className="text-blue-400" />
-    }
+      snippet: 'cout << "Hello";',
+      icon: <SiCplusplus size={26} className="text-blue-400" />,
+    },
   ];
 
   return (
-    <>
-      <div className='w-full min-h-screen bg-[#030712] py-10'>
-
-        {/* Header */}
-        <div className='text-center relative mb-10 text-white font-bold text-4xl'>
+    <section
+      id="skills"
+      className="w-full bg-[#030712] text-gray-300 py-32"
+    >
+      {/* Header */}
+      <div className="max-w-6xl mx-auto px-6 mb-16">
+        <h2 className="text-4xl font-semibold text-gray-200">
           Technical Expertise
-          <div className='h-1 w-[20%] bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-2 rounded-full'></div>
-        </div>
+        </h2>
+        <div className="mt-3 h-[2px] w-24 bg-indigo-400 rounded-full"></div>
+      </div>
 
-        {/* Grid */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center px-5'>
+      {/* Masonry layout */}
+      <div className="max-w-6xl mx-auto px-6">
+        <div
+          className="
+            columns-1
+            sm:columns-2
+            lg:columns-3
+            gap-4
+          "
+        >
           {skillsData.map((skill, index) => (
-            <SkillsCard
+            <div
               key={index}
-              title={skill.title}
-              info={skill.info}
-              status={skill.status}
-              snippet={skill.snippet}
-              icon={skill.icon}
-              color={
-                skill.status === "Done"
-                  ? "#4caf50"
-                  : skill.status === "Practicing"
+              className="mb-4 break-inside-avoid"
+            >
+              <SkillsCard
+                title={skill.title}
+                info={skill.info}
+                status={skill.status}
+                snippet={skill.snippet}
+                icon={skill.icon}
+                color={
+                  skill.status === "Done"
+                    ? "#4caf50"
+                    : skill.status === "Practicing"
                     ? "#ff9800"
                     : "#f44336"
-              }
-              status2={status2}
-            />
+                }
+                status2={status2}
+              />
+            </div>
           ))}
         </div>
       </div>
-    </>
-  )
+    </section>
+  );
 }
 
 export default Skills;

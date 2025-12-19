@@ -49,7 +49,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <div className="p-8 bg-[#0f172a] text-white min-h-screen">
+    <section id="projects"  className="p-8 bg-[#0f172a] text-white min-h-screen">
        <div className='text-center relative mb-10 text-white font-bold text-4xl'>
           Projects
           <div className='h-1 w-[10%] bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-2 rounded-full'></div>
@@ -83,6 +83,6 @@ export default function Projects() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   )
 }

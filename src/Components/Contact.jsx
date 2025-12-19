@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] flex items-center justify-center px-4 py-16 text-white">
+   <section id="contact"  className="min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] flex items-center justify-center px-4 py-16 text-white">
       <div className="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl p-10 max-w-2xl w-full border border-white/20">
         <h2 className="text-4xl font-bold mb-2 text-center text-white">
           Let's Connect
@@ -61,6 +61,6 @@ export default function Contact() {
           I usually reply within 24 hours. Looking forward to hearing from you!
         </p>
       </div>
-    </div>
+    </section>
   );
 }
