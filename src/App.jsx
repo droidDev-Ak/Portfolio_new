@@ -9,9 +9,11 @@ import Projects from "./Components/Projects";
 import Contact from "./Components/Contact";
 import About from "./Components/About";
 import Experience from "./Components/Experience";
+import Cursor from "./Cards/Cursor";
 function App() {
   return (
     <>
+    <Cursor/>
       <Navbar />
       <main>
         <Home />

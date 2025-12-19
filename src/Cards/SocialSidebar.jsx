@@ -9,7 +9,7 @@ const SocialSidebar = () => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-8 md:left-12 z-50 hidden md:flex flex-col items-center gap-8">
+    <div className="fixed bottom-0 left-8 md:left-5 z-50 hidden md:flex flex-col items-center gap-8">
       <div className="flex flex-col gap-7 mb-2">
         {socials.map((item, i) => (
           <a
@@ -22,7 +22,7 @@ const SocialSidebar = () => {
           </a>
         ))}
       </div>
-      {/* Increased height and dimmed color for a cleaner "anchor" */}
+
       <div className="w-[1px] h-32 bg-slate-800/60"></div>
     </div>
   );

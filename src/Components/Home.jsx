@@ -74,18 +74,25 @@ function Home() {
             </div>
           </div>
 
-          <div className="profile-img hidden lg:flex items-center justify-center lg:pt-16">
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-indigo-500/10 blur-3xl rounded-full group-hover:bg-indigo-500/20 transition-all duration-700"></div>
-              <div className="relative p-1 rounded-full border border-white/5 bg-slate-900/40 shadow-2xl">
-                <img
-                  src="/img.png"
-                  alt="Akash Kumar"
-                  className="w-64 h-64 xl:w-72 xl:h-72 rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 border border-white/10"
-                />
-              </div>
-            </div>
-          </div>
+        <div className="profile-img hidden lg:flex items-center justify-center lg:pt-16">
+  <div className="relative group cursor-pointer">
+
+    <div className="absolute -inset-6 bg-indigo-500/20 blur-3xl rounded-full group-hover:bg-indigo-500/40 group-hover:scale-110 transition-all duration-700"></div>
+    
+
+    <div className="relative aspect-square w-64 xl:w-72 rounded-full border border-white/10 p-2 bg-slate-900/40 backdrop-blur-sm overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_rgba(79,70,229,0.3)]">
+      <img
+        src="/img.png"
+        alt="Akash Kumar"
+
+        className="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-in-out"
+      />
+      
+
+      <div className="absolute inset-0 rounded-full bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    </div>
+  </div>
+</div>
         </div>
       </div>
 

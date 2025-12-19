@@ -1,164 +1,70 @@
-import { useState } from "react";
-import SkillsCard from "../Cards/SkillsCard";
-import {
-  FaHtml5,
-  FaCss3,
-  FaJs,
-  FaReact,
-  FaNodeJs,
-  FaGitAlt,
-  FaDatabase,
+import React from "react";
+import { 
+  FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs, FaGitAlt, FaDatabase 
 } from "react-icons/fa";
-import {
-  SiTailwindcss,
-  SiExpress,
-  SiMongodb,
-  SiGreensock,
-  SiCplusplus,
+import { 
+  SiTailwindcss, SiExpress, SiMongodb, SiGreensock, SiCplusplus 
 } from "react-icons/si";
 
 function Skills() {
-  const [status2] = useState("Done");
-
   const skillsData = [
-    {
-      title: "HTML",
-      info: "Markup language used to create website structure",
-      status: "Done",
-      snippet: "<div>Hello World</div>",
-      icon: <FaHtml5 size={26} className="text-orange-500" />,
-    },
-    {
-      title: "CSS",
-      info: "Used to style layouts and UI components",
-      status: "Done",
-      snippet: "body { background-color: #fff; }",
-      icon: <FaCss3 size={26} className="text-blue-500" />,
-    },
-    {
-      title: "JavaScript",
-      info: "Core language for web interactivity",
-      status: "Done",
-      snippet: "console.log('Hello, World!');",
-      icon: <FaJs size={26} className="text-yellow-400" />,
-    },
-    {
-      title: "React",
-      info: "Library for building component-driven UIs",
-      status: "Done",
-      snippet: "const [count, setCount] = useState(0);",
-      icon: <FaReact size={26} className="text-[#61DBFB]" />,
-    },
-    {
-      title: "Tailwind CSS",
-      info: "Utility-first CSS framework for rapid UI development",
-      status: "Done",
-      snippet: "className='px-4 py-2 bg-indigo-500'",
-      icon: <SiTailwindcss size={26} className="text-sky-400" />,
-    },
-    {
-      title: "GSAP",
-      info: "Animation library for smooth UI motion",
-      status: "Done",
-      snippet: "gsap.from('.el', { y: 50 })",
-      icon: <SiGreensock size={26} className="text-green-500" />,
-    },
-    {
-      title: "Node.js",
-      info: "JavaScript runtime for backend logic",
-      status: "Done",
-      snippet: "const server = http.createServer()",
-      icon: <FaNodeJs size={26} className="text-green-600" />,
-    },
-    {
-      title: "Express.js",
-      info: "Backend framework for building scalable APIs",
-      status: "Done",
-      snippet: "app.post('/api', handler)",
-      icon: <SiExpress size={26} className="text-gray-200" />,
-    },
-    {
-      title: "MongoDB",
-      info: "NoSQL database for application data",
-      status: "Done",
-      snippet: "User.find({})",
-      icon: <SiMongodb size={26} className="text-green-400" />,
-    },
-    {
-      title: "REST APIs",
-      info: "Designing and consuming RESTful backend services",
-      status: "Practicing",
-      snippet: "GET /api/users",
-      icon: <FaDatabase size={26} className="text-indigo-400" />,
-    },
-    {
-      title: "Git & GitHub",
-      info: "Version control & team collaboration",
-      status: "Done",
-      snippet: "git push origin main",
-      icon: <FaGitAlt size={26} className="text-orange-400" />,
-    },
-    {
-      title: "C++",
-      info: "Used for DSA and problem solving",
-      status: "Done",
-      snippet: 'cout << "Hello";',
-      icon: <SiCplusplus size={26} className="text-blue-400" />,
-    },
+    { title: "React", icon: <FaReact className="text-[#61DAFB]" />, level: "Advanced" },
+    { title: "JavaScript", icon: <FaJs className="text-[#F7DF1E]" />, level: "Advanced" },
+    { title: "Node.js", icon: <FaNodeJs className="text-[#339933]" />, level: "Intermediate" },
+    { title: "MongoDB", icon: <SiMongodb className="text-[#47A248]" />, level: "Intermediate" },
+    { title: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06B6D4]" />, level: "Advanced" },
+    { title: "GSAP", icon: <SiGreensock className="text-[#88CE02]" />, level: "Advanced" },
+    { title: "Express.js", icon: <SiExpress className="text-white" />, level: "Intermediate" },
+    { title: "HTML5", icon: <FaHtml5 className="text-[#E34F26]" />, level: "Advanced" },
+    { title: "CSS3", icon: <FaCss3 className="text-[#1572B6]" />, level: "Advanced" },
+    { title: "REST APIs", icon: <FaDatabase className="text-[#4479A1]" />, level: "Practicing" },
+    { title: "Git & GitHub", icon: <FaGitAlt className="text-[#F05032]" />, level: "Advanced" },
+    { title: "C++ (DSA)", icon: <SiCplusplus className="text-[#00599C]" />, level: "Advanced" },
   ];
 
   return (
-    <section
-      className="
-        relative
-        w-full
-        bg-[#030712]
-        text-gray-300
-        py-32
-        z-10
-        isolate
-      "
-    >
-      <div
-        id="skills"
-        className="absolute -top-24 h-[60vh] w-full pointer-events-none"
-      />
+    <section className="relative w-full bg-[#020617] text-slate-300 py-32 overflow-hidden">
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
+      <div id="skills" className="absolute -top-24 h-1 w-full pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6 mb-20 text-center">
-        <h2 className="text-4xl font-semibold text-gray-200">
-          Technical Expertise
-        </h2>
-        <div className="mt-3 h-[3px] w-20 bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-full mx-auto"></div>
-      </div>
+      <div className="max-w-6xl mx-auto px-10">
+        <div className="flex items-center gap-6 mb-20">
+          <h2 className="text-3xl md:text-4xl font-black text-white whitespace-nowrap">
+            <span className="text-indigo-400 font-mono text-xl mr-2">02.</span> 
+            Technical Expertise
+          </h2>
+          <div className="h-[1px] w-full max-w-md bg-slate-800"></div>
+        </div>
 
-      <div className="max-w-6xl mx-auto px-6">
-        <div
-          className="
-            columns-1
-            sm:columns-2
-            lg:columns-3
-            gap-4
-          "
-        >
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {skillsData.map((skill, index) => (
-            <div key={index} className="mb-4 break-inside-avoid">
-              <SkillsCard
-                title={skill.title}
-                info={skill.info}
-                status={skill.status}
-                snippet={skill.snippet}
-                icon={skill.icon}
-                color={
-                  skill.status === "Done"
-                    ? "#4caf50"
-                    : skill.status === "Practicing"
-                    ? "#ff9800"
-                    : "#f44336"
-                }
-                status2={status2}
-              />
+            <div 
+              key={index}
+              className="group relative flex flex-col p-6 rounded-lg bg-slate-900/20 border border-slate-800/50 hover:border-indigo-500/40 hover:bg-slate-800/30 transition-all duration-500"
+            >
+
+              <div className="text-4xl grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 mb-4">
+                {skill.icon}
+              </div>
+
+              <div>
+                <h3 className="text-slate-200 font-bold tracking-tight text-sm uppercase group-hover:text-white transition-colors">
+                  {skill.title}
+                </h3>
+                <p className="text-[10px] font-mono text-slate-500 mt-1 uppercase tracking-widest">
+                  {skill.level}
+                </p>
+              </div>
+
+              <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-indigo-500 group-hover:w-full transition-all duration-500"></div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-20 text-center">
+          <p className="text-slate-500 font-mono text-xs uppercase tracking-[0.3em]">
+            // constantly evolving my toolkit
+          </p>
         </div>
       </div>
     </section>

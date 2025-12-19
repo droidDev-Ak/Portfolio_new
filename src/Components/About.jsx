@@ -1,129 +1,144 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   useEffect(() => {
     gsap.fromTo(
       ".about-fade",
-      { y: 40, opacity: 0 },
+      { y: 30, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 0.8,
-        stagger: 0.15,
+        duration: 1,
+        stagger: 0.1,
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".about-section",
-          start: "top 70%",
+          start: "top 75%",
         },
       }
     );
   }, []);
 
   return (
-    <section className="about-section relative w-full bg-[#040813] text-gray-300 py-32">
-      {/* 🔑 NAVBAR ANCHOR — DO NOT REMOVE */}
-      <div
-        id="about"
-        className="absolute -top-24 h-[60vh] w-full pointer-events-none"
-      />
+    <section className="about-section relative w-full bg-[#020617] text-slate-400 py-32 overflow-hidden">
 
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Heading */}
-        <div className="mb-20">
-          <h2 className="text-4xl font-semibold text-gray-200">
+      <div className="absolute top-1/4 -right-20 w-[400px] h-[400px] bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
+
+
+      <div id="about" className="absolute -top-24 h-1 w-full pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-10">
+        
+
+        <div className="flex items-center gap-6 mb-16 about-fade">
+          <h2 className="text-3xl md:text-4xl font-black text-white whitespace-nowrap">
+            <span className="text-indigo-400 font-mono text-xl mr-2">01.</span> 
             About Me
           </h2>
-          <div className="mt-3 h-[3px] w-20 bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-full"></div>
+          <div className="h-[1px] w-full max-w-md bg-slate-800"></div>
         </div>
 
-        {/* Main layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-          {/* Left: Narrative */}
-          <div className="space-y-6 text-lg leading-relaxed">
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          
+
+          <div className="lg:col-span-7 space-y-6 text-base md:text-lg leading-relaxed">
             <p className="about-fade">
-              I’m a{" "}
-              <span className="text-gray-200 font-medium">
-                MERN stack developer
-              </span>{" "}
-              who enjoys building complete web applications — from crafting
-              clean, intuitive user interfaces to developing scalable backend
-              APIs.
+              Hello! I'm Akash, and I find immense joy in building things that live on the internet. 
+              My journey into web development started with a curiosity for how data moves behind the scenes, 
+              which led me to master the <span className="text-indigo-300">MERN stack</span>.
             </p>
 
             <p className="about-fade">
-              I like working across the stack where frontend design meets
-              backend logic. My focus is on writing{" "}
-              <span className="text-gray-200">
-                maintainable, production-ready code
-              </span>{" "}
-              and building features that solve real problems, not just look good
-              on the surface.
+              Fast-forward to today, and my primary focus is on engineering <span className="text-slate-200">exceptional digital experiences</span>. 
+              I specialize in that sweet spot where clean, intuitive frontend design meets robust, 
+              scalable backend logic.
             </p>
 
             <p className="about-fade">
-              Currently, I work primarily with{" "}
-              <span className="text-gray-200">
-                React, Node.js, Express, and MongoDB
-              </span>
-              , while continuously improving my understanding of application
-              architecture, performance, and real-world product development.
+              I’m committed to writing <span className="text-slate-200">maintainable, production-ready code</span> 
+              and solving real-world problems. I don't just build features; I build solutions that prioritize 
+              performance and user intent.
             </p>
+
+            <div className="about-fade pt-4">
+              <p className="text-sm font-mono text-indigo-400 mb-4 uppercase tracking-widest">
+                // Current Tech Stack
+              </p>
+              <ul className="grid grid-cols-2 gap-2 text-sm font-mono text-slate-300">
+                <li className="flex items-center gap-2">
+                  <span className="text-indigo-500 text-xs">▹</span> React.js
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-indigo-500 text-xs">▹</span> Node.js
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-indigo-500 text-xs">▹</span> TypeScript
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-indigo-500 text-xs">▹</span> Express
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-indigo-500 text-xs">▹</span> MongoDB
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-indigo-500 text-xs">▹</span> Tailwind CSS
+                </li>
+              </ul>
+            </div>
           </div>
 
-          {/* Right: Strengths */}
-          <div className="space-y-6">
-            <h3 className="about-fade text-2xl font-semibold text-gray-200 mb-6">
-              What I bring to the table
-            </h3>
 
-            <div className="space-y-4">
+          <div className="lg:col-span-5 space-y-4">
+
+            <p className="about-fade text-xs font-bold text-slate-500 uppercase tracking-[0.2em] mb-6">
+              Core Principles
+            </p>
+
+            <div className="space-y-3">
               {[
                 {
-                  title: "Clean & Scalable Code",
-                  desc: "Code that is easy to read, maintain, and scale as products grow.",
+                  title: "User-First Logic",
+                  desc: "Prioritizing usability and intuitive flow in every interaction.",
                 },
                 {
-                  title: "Full-Stack Perspective",
-                  desc: "Comfortable thinking across frontend, backend, APIs, and data flow.",
+                  title: "Full-Stack Mindset",
+                  desc: "Thinking across the entire architecture, from DB to UI.",
                 },
                 {
-                  title: "User-First Development",
-                  desc: "I prioritize usability, clarity, and intuitive experiences.",
-                },
-                {
-                  title: "Attention to Detail",
-                  desc: "From spacing and typography to micro-interactions that matter.",
-                },
-                {
-                  title: "Growth-Oriented Mindset",
-                  desc: "Constantly learning, improving fundamentals, and refining practices.",
+                  title: "Clean Architecture",
+                  desc: "Writing modular, scalable, and easy-to-read codebases.",
                 },
               ].map((item, index) => (
                 <div
                   key={index}
                   className="
                     about-fade
-                    rounded-xl
-                    border border-white/10
-                    bg-white/5
-                    p-5
+                    group
+                    rounded-lg
+                    border border-slate-800/50
+                    bg-slate-900/20
+                    p-6
+                    hover:bg-slate-800/30
+                    hover:border-indigo-500/30
                     transition-all duration-300
-                    hover:-translate-y-1
-                    hover:border-indigo-400/40
-                    hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)]
                   "
                 >
-                  <h4 className="text-gray-200 font-medium">
+                  <h4 className="text-slate-200 font-bold text-sm tracking-tight group-hover:text-indigo-400 transition-colors">
                     {item.title}
                   </h4>
-                  <p className="text-sm text-gray-400 mt-1 leading-relaxed">
+                  <p className="text-xs text-slate-500 mt-2 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </section>

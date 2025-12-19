@@ -4,11 +4,9 @@ const experiences = [
   {
     company: "Meelance",
     role: "Web Developer Intern",
-    duration: "2024",
-    description:
-      "Worked on real-world web development tasks with a focus on responsive UI, clean code, and product-level implementation.",
+    duration: "Jan 2024 — June 2024",
+    description: "Built and styled UI components using HTML, CSS, and JavaScript with a focus on responsive design.",
     points: [
-      "Built and styled UI components using HTML, CSS, and JavaScript",
       "Worked extensively with React for component-based development",
       "Collaborated with team members to fix bugs and improve UX",
       "Gained hands-on experience working on a live production project",
@@ -16,15 +14,14 @@ const experiences = [
     status: "Completed",
   },
   {
-    company: "Looking for New Opportunities",
+    company: "Freelance",
     role: "MERN Stack Developer",
     duration: "Present",
-    description:
-      "Currently seeking internship or project-based opportunities to apply my MERN stack skills and work on meaningful products.",
+    description: "Developing full-stack applications while improving system design fundamentals.",
     points: [
-      "Actively applying for full-stack and backend roles",
-      "Building personal projects while improving system design basics",
+      "Actively building personal projects while improving system design basics",
       "Open to internships, freelance work, and startup collaborations",
+      "Crafting scalable backend APIs using Node.js and MongoDB",
     ],
     status: "Ongoing",
   },
@@ -32,123 +29,75 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section
-      className="
-        relative
-        w-full
-        bg-[#020617]
-        text-gray-300
-        py-32
-        z-10
-        isolate
-      "
-    >
-      <div
-        id="experience"
-        className="absolute -top-24 h-[60vh] w-full pointer-events-none"
-      />
+    <section className="relative w-full bg-[#020617] text-slate-400 py-32 overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6 mb-20 text-center">
-        <h2 className="text-4xl font-semibold text-gray-200">
-          Experience
-        </h2>
-        <div className="mt-3 h-[3px] w-20 bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-full mx-auto"></div>
-        <p className="mt-4 text-gray-400 max-w-xl mx-auto">
-          My professional journey so far and what I’m currently aiming for.
-        </p>
-      </div>
+      {/* 🔑 NAVBAR ANCHOR */}
+      <div id="experience" className="absolute -top-24 h-1 w-full pointer-events-none" />
 
-      <div className="relative max-w-6xl mx-auto px-6">
-        <div className="absolute left-1/2 top-0 h-full w-px bg-gradient-to-b from-indigo-400/50 via-purple-500/30 to-transparent -translate-x-1/2"></div>
+      <div className="max-w-4xl mx-auto px-10">
+        
+        {/* Section Header - Consistent with previous sections */}
+        <div className="flex items-center gap-6 mb-16">
+          <h2 className="text-3xl md:text-4xl font-black text-white whitespace-nowrap">
+            <span className="text-indigo-400 font-mono text-xl mr-2">03.</span> 
+            Experience
+          </h2>
+          <div className="h-[1px] w-full max-w-xs bg-slate-800"></div>
+        </div>
 
-        <div className="space-y-24">
-          {experiences.map((exp, index) => {
-            const isLeft = index % 2 === 0;
-
-            return (
-              <div key={index} className="relative flex w-full">
-                {isLeft && (
-                  <div className="w-1/2 pr-12 flex justify-end">
-                    <ExperienceCard exp={exp} />
-                  </div>
-                )}
-
-                <div className="absolute left-1/2 top-6 -translate-x-1/2 z-10">
-                  <div className="w-4 h-4 rounded-full bg-indigo-400 shadow-[0_0_20px_rgba(99,102,241,0.9)]"></div>
+        {/* Professional List Layout */}
+        <div className="space-y-16">
+          {experiences.map((exp, index) => (
+            <div key={index} className="relative pl-8 group">
+              {/* Vertical accent line per item */}
+              <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-slate-800 group-hover:bg-indigo-500 transition-colors duration-500"></div>
+              
+              <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-100 group-hover:text-indigo-400 transition-colors">
+                    {exp.role} <span className="text-indigo-400">@ {exp.company}</span>
+                  </h3>
+                  <p className="text-xs font-mono text-slate-500 mt-1 uppercase tracking-widest">
+                    {exp.duration}
+                  </p>
                 </div>
-
-                {!isLeft && (
-                  <div className="w-1/2 pl-12 ml-auto">
-                    <ExperienceCard exp={exp} />
-                  </div>
-                )}
+                
+                {/* Status Badge - Subtle and Small */}
+                <div className={`text-[10px] font-bold px-2 py-0.5 rounded border uppercase tracking-tighter self-start md:self-auto
+                  ${exp.status === "Completed" 
+                    ? "border-emerald-500/20 text-emerald-500/60 bg-emerald-500/5" 
+                    : "border-indigo-500/20 text-indigo-400 bg-indigo-500/5"}`}>
+                  {exp.status}
+                </div>
               </div>
-            );
-          })}
+
+              <div className="mt-6 max-w-2xl">
+                <p className="text-base text-slate-400 leading-relaxed mb-4">
+                  {exp.description}
+                </p>
+                
+                <ul className="space-y-3">
+                  {exp.points.map((point, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm text-slate-400">
+                      <span className="text-indigo-500 mt-1.5 text-[10px]">▹</span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer philosophy */}
+        <div className="mt-20 opacity-40">
+           <p className="text-xs font-mono uppercase tracking-[0.4em]">
+             // building better products daily
+           </p>
         </div>
       </div>
     </section>
-  );
-}
-
-function ExperienceCard({ exp }) {
-  return (
-    <div
-      className="
-        group relative
-        rounded-2xl
-        border border-white/10
-        bg-[#0f172a]/80
-        backdrop-blur-lg
-        p-8
-        transition-all duration-300
-        hover:-translate-y-1
-        hover:shadow-[0_25px_70px_rgba(0,0,0,0.6)]
-        hover:border-indigo-400/40
-      "
-    >
-      <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-tr from-indigo-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition duration-300" />
-
-      <div className="relative z-10">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <h3 className="text-2xl font-semibold text-gray-100">
-              {exp.company}
-            </h3>
-            <p className="text-sm text-indigo-400 mt-1">
-              {exp.role}
-            </p>
-          </div>
-          <span className="text-sm text-gray-400 whitespace-nowrap">
-            {exp.duration}
-          </span>
-        </div>
-
-        <p className="mt-4 text-gray-400 leading-relaxed">
-          {exp.description}
-        </p>
-
-        <ul className="mt-5 space-y-2 text-sm text-gray-300 list-disc list-inside">
-          {exp.points.map((point, i) => (
-            <li key={i}>{point}</li>
-          ))}
-        </ul>
-
-        <div className="mt-6">
-          <span
-            className={`
-              inline-block text-xs px-3 py-1 rounded-full border
-              ${
-                exp.status === "Completed"
-                  ? "border-green-400/30 text-green-300 bg-green-400/10"
-                  : "border-yellow-400/30 text-yellow-300 bg-yellow-400/10"
-              }
-            `}
-          >
-            {exp.status}
-          </span>
-        </div>
-      </div>
-    </div>
   );
 }

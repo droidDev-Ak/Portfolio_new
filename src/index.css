@@ -20,6 +20,25 @@
 }
 
 
+@media (min-width: 768px) {
+  html, body {
+    cursor: auto;
+  }
+  
+
+  a, button, [role="button"] {
+    cursor: pointer;
+  }
+}
+
+
+.hovering-link {
+  transform: scale(1.5);
+  background-color: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.8);
+}
+
+
 
 /* @theme {
   --animate-fade-in-scale: fade-in-scale 0.3s ease-out;

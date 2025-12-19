@@ -2,97 +2,94 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import MyPdf from "../assets/Resume.pdf";
-const sections = [
-  "home",
-  "about",
-  "skills",
-  "experience",
-  "projects",
-  "contact",
-];
 
-const scrollToSection = (id) => {
-  const anchor = document.getElementById(id);
-  anchor?.scrollIntoView({ behavior: "smooth", block: "start" });
-};
+const sections = ["about", "skills", "experience", "projects", "contact"];
 
 export default function Navbar() {
   const [active, setActive] = useState("home");
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  useGSAP(() => {
-    gsap.from(".Navbar", {
-      y: -80,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power3.out",
-    });
-  });
-
+  // Handle scroll for glass effect
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: "-50% 0px -50% 0px",
-      }
-    );
-
-    sections.forEach((id) => {
-      const anchor = document.getElementById(id);
-      if (anchor) observer.observe(anchor);
-    });
-
-    return () => observer.disconnect();
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Staggered GSAP Entrance
+  useGSAP(() => {
+    const tl = gsap.timeline();
+    tl.from(".nav-logo", { opacity: 0, x: -20, duration: 0.8, ease: "power4.out" })
+      .from(".nav-item", { opacity: 0, y: -20, duration: 0.6, stagger: 0.1, ease: "power3.out" }, "-=0.4")
+      .from(".nav-resume", { opacity: 0, scale: 0.8, duration: 0.5, ease: "back.out(1.7)" }, "-=0.3");
+  });
+
+  const scrollToSection = (id) => {
+    const anchor = document.getElementById(id);
+    anchor?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
-    <nav className="Navbar fixed top-0 w-full z-50 bg-[#040813]/80 backdrop-blur-md">
-      <div className="max-w-6xl mx-auto h-20 flex items-center justify-between px-6 text-sm text-gray-300">
-        <div className="text-lg font-semibold text-indigo-400 cursor-pointer">
-          Akash<span className="text-white">.</span>
-        </div>
-
-        <div className="hidden md:flex gap-8">
-          {sections.map((section) => (
-            <button
-              key={section}
-              onClick={() => scrollToSection(section)}
-              className={`
-                relative cursor-pointer transition-colors duration-300
-                ${
-                  active === section
-                    ? "text-indigo-400"
-                    : "hover:text-indigo-400"
-                }
-              `}
-            >
-              {section.charAt(0).toUpperCase() + section.slice(1)}
-
-              <span
-                className={`
-                  absolute -bottom-1 left-0 h-[2px] bg-indigo-400
-                  transition-all duration-300
-                  ${active === section ? "w-full" : "w-0"}
-                `}
-              />
-            </button>
-          ))}
-        </div>
-
+    <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 
+      ${isScrolled ? "h-16 bg-[#020617]/70 backdrop-blur-md border-b border-white/5 shadow-2xl" : "h-24 bg-transparent"}`}>
+      
+      <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-8 md:px-12">
         
-        <a
-          href={MyPdf}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="border border-indigo-400 text-indigo-400 px-4 py-2 rounded-md hover:bg-indigo-400 hover:text-black transition"
+        {/* LOGO */}
+        <div 
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="nav-logo cursor-pointer group"
         >
-          View Resume
-        </a>
+          <div className="text-xl font-black tracking-tighter text-white flex items-center">
+            <span className="text-indigo-500 mr-0.5 group-hover:rotate-12 transition-transform">A</span>
+            kash.
+          </div>
+        </div>
+
+        {/* NAVIGATION LINKS */}
+        <div className="hidden md:flex items-center gap-12">
+          <ul className="flex items-center gap-10 list-none">
+            {sections.map((section, index) => (
+              <li key={section} className="nav-item">
+                <button
+                  onClick={() => scrollToSection(section)}
+                  className="relative group py-2"
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-indigo-400 font-mono text-[10px]">0{index + 1}.</span>
+                    <span className={`text-[13px] font-medium tracking-wide uppercase transition-colors
+                      ${active === section ? "text-white" : "text-slate-400 group-hover:text-indigo-300"}`}>
+                      {section}
+                    </span>
+                  </div>
+                  
+                  {/* Subtle Underline Indicator */}
+                  <span className={`absolute bottom-0 left-0 h-[1.5px] bg-indigo-500 transition-all duration-500
+                    ${active === section ? "w-full" : "w-0 group-hover:w-1/2"}`} 
+                  />
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          {/* RESUME BUTTON */}
+          <div className="nav-resume">
+            <a
+              href={MyPdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2.5 border border-indigo-500/40 text-indigo-400 font-mono text-xs tracking-widest uppercase rounded-sm hover:bg-indigo-500/10 hover:border-indigo-500 transition-all duration-300 shadow-lg shadow-indigo-500/5"
+            >
+              Resume
+            </a>
+          </div>
+        </div>
+
+        {/* MOBILE TRIGGER */}
+        <div className="md:hidden flex items-center">
+           <div className="w-8 h-[1px] bg-indigo-400 after:content-[''] after:block after:w-5 after:h-[1px] after:bg-indigo-400 after:mt-2 after:ml-auto"></div>
+        </div>
+
       </div>
     </nav>
   );
